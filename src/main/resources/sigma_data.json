@@ -1,27 +1,32 @@
 [	
 	{
 		"@id": "10",
+		"machineId": "machine_id2",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryAction",
-		"spel": "T(System).out.println('----Exit action for DOCUMENTATION_TASK_STATE_1----')"
+		"spel": "T(System).out.println('Exit action for DOCUMENTATION_TASK_STATE_1')"
 	},
 	{
 		"@id": "11",
+		"machineId": "machine_id2",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryAction",
-		"spel": "T(System).out.println('----Entry action for PROGRAMMING_TASK_STATE_2----')"
+		"spel": "T(System).out.println('Entry action for PROGRAMMING_TASK_STATE_2')"
 	},
 	{
 		"@id": "12",
+		"machineId": "machine_id2",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryAction",
-		"spel": "T(System).out.println('----Action on QC_TASK_STATE_3----')"
+		"spel": "T(System).out.println('Action on QC_TASK_STATE_3')"
 	},
 	{
 		"@id": "13",
+		"machineId": "machine_id2",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryAction",
-		"spel": "T(System).out.println('----Action called while transition from State 2 to 3')"
+		"spel": "T(System).out.println('Action called while transition from State 2 to 3')"
 	},
 	{
 		"@id": "1",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryState",
+		"machineId": "machine_id2",
 		"initial": true,
 		"state": "DOCUMENTATION_TASK_STATE_1",
 		"exitActions": ["10"]
@@ -29,6 +34,7 @@
 	{
 		"@id": "2",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryState",
+		"machineId": "machine_id2",
 		"initial": false,
 		"state": "PROGRAMMING_TASK_STATE_2",
 		"entryActions": ["11"]
@@ -36,22 +42,39 @@
 	{
 		"@id": "3",
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryState",
+		"machineId": "machine_id2",
 		"initial": false,
 		"state": "QC_TASK_STATE_3",
 		"stateActions": ["12"]
 	},
 	{
-		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryTransition",
-		"source": "1",
-		"target": "2",
-		"event": "DOC_TASK_COMPLETE_E1",
-		"kind": "EXTERNAL"
+		"@id": "4",
+		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryState",
+		"machineId": "machine_id2",
+		"initial": false,
+		"state": "STATE_4"
 	},
 	{
 		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryTransition",
+		"machineId": "machine_id2",
+		"source": "1",
+		"target": "2",
+		"event": "DOC_TASK_COMPLETE_E1"
+		
+	},
+	{
+		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryTransition",
+		"machineId": "machine_id2",
 		"source": "2",
 		"target": "3",
 		"event": "PROG_TASK_COMPLETE_E2",
 		"actions": ["13"]
+	},
+	{
+		"_class": "org.springframework.statemachine.data.jpa.JpaRepositoryTransition",
+		"machineId": "machine_id2",
+		"source": "3",
+		"target": "4",
+		"event": "E3"
 	}
 ]
